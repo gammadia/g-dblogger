@@ -3,7 +3,7 @@ module.exports = function (app) {
 	'use strict';
 
 	var logger		= app.logger && app.logger.child({component: 'DBLogger'}),
-		database	= app.database.use(app.config.get('dblogger:db')),
+		database	= app.database.get(),
 		extend		= require('xtend'),
 
 		do_log		= function(obj) {
