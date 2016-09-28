@@ -3,13 +3,16 @@ module.exports = function (app) {
 	'use strict';
 
 	var logger		= app.logger && app.logger.child({component: 'DBLogger'}),
-		database	= app.database.get(),
+        bucket      = app.database.get(),
+		key	        = null,
 		extend		= require('xtend'),
 
 		do_log		= function(obj) {
+            key = app.database.getKey();
+
 			obj.timestamp = JSON.stringify(new Date());
 
-			database.insert(obj, function (err, body) {
+			bucket.insert(key, obj, function (err, body) {
 				if (err) {
 					logger.error('Unable to log to databse', {data: obj});
 				}
