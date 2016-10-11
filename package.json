@@ -1,6 +1,6 @@
 {
   "name": "g-dblogger",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Logs persistants sur la base.",
   "main": "index.js",
   "repository": {
